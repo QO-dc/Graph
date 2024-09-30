@@ -1,0 +1,154 @@
+---
+title: "Tarea 2"
+author: "QO"
+date: "2023-11-12"
+output: html_document
+---
+
+"Librerías que usare" 
+
+```{r}
+suppressPackageStartupMessages(library(rio))
+suppressPackageStartupMessages(library(sf))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(igraph))
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+```{r}
+data <- import("Libro1.xlsx")
+```
+
+```{r}
+# Convertir columnas de votaciones en listas de países
+votos_a_favor <- strsplit(as.character(data$"Votos a Favor"), ",")
+votos_en_contra <- strsplit(as.character(data$"Votos en contra"), ",")
+abstenciones <- strsplit(as.character(data$Abstenciones), ",")
+
+# Crear una lista vacía para almacenar los edges del grafo
+edges <- list()
+# Crear aristas entre países que se abstuvieron
+for (i in 1:length(abstenciones)) {
+  if (length(abstenciones[[i]]) > 1) {  # Verificar que haya al menos 2 países
+    edges <- append(edges, combn(abstenciones[[i]], 2, simplify = FALSE))
+  }
+}
+
+# Crear un grafo a partir de los edges
+g <- graph_from_edgelist(do.call(rbind, edges), directed = FALSE)
+```
+
+```{r}
+
+votos_a_favor <- strsplit(as.character(data$"Votos a Favor"), ",")
+
+# Crear aristas entre países que votaron a favor 
+edges_1 <- list()
+for (i in 1:length(votos_a_favor)) {
+  if (length(votos_a_favor[[i]]) > 1) {  # Verificar que haya al menos 2 países
+    edges_1 <- append(edges_1, combn(votos_a_favor[[i]], 2, simplify = FALSE))
+  }
+}
+
+g_1 <- graph_from_edgelist(do.call(rbind, edges_1), directed = FALSE)
+```
+
+
+Análisis de caso 1: Votaciones a favor de las normativas 
+
+Visualización: 
+
+```{r}
+plot(g_1, vertex.size = 5, vertex.label.cex = 0.8, main = "Red de Votaciones ONU")
+```
+
+1. Conectividad 
+
+```{r}
+is.connected(g_1)
+components(g_1)$no
+```
+
+2. Distancia media
+
+```{r}
+mean_distance(g_1, directed = FALSE)
+```
+
+3. Densidad de la red
+
+```{r}
+density <- edge_density(g_1)
+print(density)
+```
+
+4. Centralidad de Nodos
+
+```{r}
+# Centralidad de grado (número de conexiones de cada nodo)
+degree_centrality <- degree(g_1)
+
+# Centralidad de cercanía (qué tan cerca está un nodo de todos los demás)
+closeness_centrality <- closeness(g_1)
+
+# Centralidad de intermediación (cuántas veces pasa la ruta más corta por un nodo)
+betweenness_centrality <- betweenness(g_1)
+
+# Mostrar los resultados
+degree_centrality
+closeness_centrality
+betweenness_centrality
+```
+
+Caso 2: Estados que se abstuvieron a la votación
+
+Vizualización: 
+
+```{r}
+plot(g, vertex.size = 5, vertex.label.cex = 0.8, main = "Red de Votaciones ONU que se absitenen a la votación")
+```
+
+1. Conectividad 
+
+```{r}
+is.connected(g)
+components(g)$no
+```
+
+2. Distancia media
+
+```{r}
+mean_distance(g, directed = FALSE)
+```
+
+3. Densidad de la red
+
+```{r}
+density <- edge_density(g)
+print(density)
+```
+
+4. Centralidad de Nodos
+
+```{r}
+# Centralidad de grado (número de conexiones de cada nodo)
+degree_centrality <- degree(g)
+
+# Centralidad de cercanía (qué tan cerca está un nodo de todos los demás)
+closeness_centrality <- closeness(g)
+
+# Centralidad de intermediación (cuántas veces pasa la ruta más corta por un nodo)
+betweenness_centrality <- betweenness(g)
+
+# Mostrar los resultados
+degree_centrality
+closeness_centrality
+betweenness_centrality
+```
+
+
+
+
+
+
