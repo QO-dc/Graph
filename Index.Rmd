@@ -1,5 +1,5 @@
 ---
-title: "Tarea 2"
+title: "Tarea 3"
 author: "QO"
 date: "2023-11-12"
 output: html_document
@@ -9,11 +9,10 @@ output: html_document
 
 ```{r}
 suppressPackageStartupMessages(library(rio))
-suppressPackageStartupMessages(library(sf))
-suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(igraph))
 suppressPackageStartupMessages(library(tidyverse))
+library(knitr)
 ```
 
 ```{r}
@@ -25,7 +24,10 @@ data <- import("Libro1.xlsx")
 votos_a_favor <- strsplit(as.character(data$"Votos a Favor"), ",")
 votos_en_contra <- strsplit(as.character(data$"Votos en contra"), ",")
 abstenciones <- strsplit(as.character(data$Abstenciones), ",")
+```
 
+
+```{r}
 # Crear una lista vacía para almacenar los edges del grafo
 edges <- list()
 # Crear aristas entre países que se abstuvieron
@@ -72,6 +74,7 @@ components(g_1)$no
 
 2. Distancia media
 
+
 ```{r}
 mean_distance(g_1, directed = FALSE)
 ```
@@ -85,6 +88,7 @@ print(density)
 
 4. Centralidad de Nodos
 
+
 ```{r}
 # Centralidad de grado (número de conexiones de cada nodo)
 degree_centrality <- degree(g_1)
@@ -95,11 +99,16 @@ closeness_centrality <- closeness(g_1)
 # Centralidad de intermediación (cuántas veces pasa la ruta más corta por un nodo)
 betweenness_centrality <- betweenness(g_1)
 
-# Mostrar los resultados
-degree_centrality
-closeness_centrality
-betweenness_centrality
+centrality_table <- data.frame(
+  Nodo = V(g_1)$name,  # Asume que los nodos tienen un atributo 'name'
+  Grado = degree_centrality,
+  Cercania = closeness_centrality,
+  Intermediacion = betweenness_centrality
+)
+kable(centrality_table)
 ```
+
+
 
 Caso 2: Estados que se abstuvieron a la votación
 
@@ -141,10 +150,22 @@ closeness_centrality <- closeness(g)
 # Centralidad de intermediación (cuántas veces pasa la ruta más corta por un nodo)
 betweenness_centrality <- betweenness(g)
 
-# Mostrar los resultados
-degree_centrality
-closeness_centrality
-betweenness_centrality
+# Centralidad de grado (número de conexiones de cada nodo)
+degree_centrality <- degree(g)
+
+# Centralidad de cercanía (qué tan cerca está un nodo de todos los demás)
+closeness_centrality <- closeness(g)
+
+# Centralidad de intermediación (cuántas veces pasa la ruta más corta por un nodo)
+betweenness_centrality <- betweenness(g)
+
+centrality_table <- data.frame(
+  Nodo = V(g)$name,  # Asume que los nodos tienen un atributo 'name'
+  Grado = degree_centrality,
+  Cercania = closeness_centrality,
+  Intermediacion = betweenness_centrality
+)
+kable(centrality_table)
 ```
 
 
