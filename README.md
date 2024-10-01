@@ -74,6 +74,7 @@ Mearsheimer, John J. (2014). The Tragedy of Great Power Politics. W.W. Norton & 
 Schweller, Randall L. (1994). Bandwagoning for Profit: Bringing the Revisionist State Back In. International Security, 19(1), 72-107.
 
 Tsygankov, Andrei P. (2012). Russia and the West from Alexander to Putin: Honor in International Relations. Cambridge University Press.
+
 Zhang, Yongjin. (2015). China in International Society since 1949: Alienation and Beyond. Palgrave Macmillan.
 
 ## El enlace de donde se extrajo los datos necesarios para la elaboración de la data 
