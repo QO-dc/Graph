@@ -1,10 +1,10 @@
 # Graph
 
-## El presente trabajo analiza las tomas de desiciones por parte del consejo de seguridad de la ONU desde el 2017 hasta el 2022, para en análisis lo desarrolla a traves de graph para encontrar relaciones entre los votantes. 
+## El presente trabajo analiza las tomas de desiciones por parte del consejo de seguridad de la ONU desde el 2017 hasta el 2022. Por lo cual, el análisis se desarrolla a traves de graph para encontrar relaciones entre los votantes. 
 
-## La base datos se formo a partir de un análisis de las votaciones, las cuales habían algun tipo de abstención o voto en contra de la resolución, con la finalidad de encontrar algún tipo de tendencia entre los votantes, en tal sentido se crearon dos modelos: 
+## La base datos se formo a partir de un análisis de las votaciones, en las cuales se encuentra algun tipo de abstención o voto en contra de la resolución, con la finalidad de encontrar algún tipo de tendencia entre los votantes, en tal sentido se crearon dos modelos: 
 
-1. El primero modelo muestra la relación entre los Estados que votan a favor de las nociones
+1. El primer modelo muestra la relación entre los Estados que votan a favor de las nociones
 2. El segundo modelo muestra la relación entre los Estados que se abstienen en las votaciones
 
 ## Resultados del primer model:
