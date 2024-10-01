@@ -68,8 +68,11 @@ La divergencia entre Rusia y China en estos temas pone de relieve sus diferentes
 ## Bibliografía 
 
 Ikenberry, G. John. (2008). The Rise of China and the Future of the West: Can the Liberal System Survive? Foreign Affairs, 87(1), 23-37.
+
 Mearsheimer, John J. (2014). The Tragedy of Great Power Politics. W.W. Norton & Company.
+
 Schweller, Randall L. (1994). Bandwagoning for Profit: Bringing the Revisionist State Back In. International Security, 19(1), 72-107.
+
 Tsygankov, Andrei P. (2012). Russia and the West from Alexander to Putin: Honor in International Relations. Cambridge University Press.
 Zhang, Yongjin. (2015). China in International Society since 1949: Alienation and Beyond. Palgrave Macmillan.
 
