@@ -10,36 +10,44 @@
 ## Resultados del primer model:
 
 1. Conectividad
+
 is_connected(g_1): Esta función verifica si el grafo g_1 es completamente conectado, es decir, si existe un camino entre todos los nodos de la red.
 Resultado: [1] TRUE: Significa que el grafo g_1 es completamente conectado, por lo que todos los nodos pueden llegar a todos los demás, directa o indirectamente.
 
 3. Componentes de la red
+
 components(g_1)$no: Esta función cuenta el número de componentes conectados en el grafo.
 Resultado: [1] 1: Significa que solo hay un componente conectado en la red, lo que implica que todos los nodos pertenecen al mismo grupo y están conectados de alguna forma (directa o indirecta). No hay subredes aisladas.
 
 4. Distancia media
+
 mean_distance(g_1, directed = FALSE): Calcula la distancia media entre todos los pares de nodos en el grafo. La distancia entre dos nodos es la longitud del camino más corto que los conecta.
 Resultado: [1] 1.56871: Indica que, en promedio, la distancia más corta entre dos nodos es de 1.57 pasos. Esto es útil para entender cuán "compacta" es la red; cuanto menor sea este valor, más cercanos estarán entre sí los nodos en promedio.
 
 5. Densidad de la red
+
 edge_density(g_1): Calcula la densidad del grafo, que mide cuántas conexiones (aristas) hay en la red en relación con el número máximo posible de conexiones.
 Resultado: [1] 2.887949: Parece que este valor es más alto de lo esperado, ya que la densidad generalmente está entre 0 y 1. Esto puede indicar que hay algún problema con el cálculo o el valor está normalizado de una manera diferente (podrías revisar la estructura del grafo).
 
 ## Resultados del segundo modelo:
 
 1. Conectividad
+
 is_connected(g): Esta función verifica si todos los nodos en el grafo g están conectados entre sí, ya sea directa o indirectamente.
 Resultado: [1] FALSE: Esto indica que el grafo g no está completamente conectado. En otras palabras, hay nodos o grupos de nodos que no tienen un camino hacia otros nodos, es decir, la red está fragmentada.
 
 2. Componentes de la red
+
 components(g)$no: Esta función cuenta cuántos componentes conectados tiene el grafo. Un componente es un grupo de nodos donde existe un camino entre cada par de nodos.
 Resultado: [1] 2: Esto indica que la red está dividida en 2 componentes conectados, lo que significa que existen dos grupos de nodos en la red que están conectados internamente, pero no hay conexiones entre estos grupos. Esta es la razón por la que el grafo no es completamente conectado.
 
 3. Distancia media
+
 mean_distance(g, directed = FALSE): Calcula la distancia media entre todos los pares de nodos en la red, considerando caminos no dirigidos.
 Resultado: [1] 1.961039: La distancia media entre los nodos es de aproximadamente 1.96 pasos. Esto sugiere que, en promedio, la mayoría de los nodos están relativamente cerca, pero dado que la red no está completamente conectada, esta media se calcula solo dentro de los componentes conectados. Este valor es más alto que en el primer modelo, lo que indica que los nodos están un poco más dispersos en comparación con el grafo completamente conectado del primer ejemplo.
 
 4. Densidad de la red
+
 edge_density(g): Mide la proporción de conexiones existentes en la red en relación con el número máximo posible de conexiones.
 Resultado: [1] 0.4894737: La densidad es aproximadamente 0.49, lo que significa que la red tiene casi el 49% de las conexiones posibles entre nodos. Esto indica una red moderadamente conectada, pero no completamente saturada de enlaces. Dado que hay dos componentes en la red, no es posible que todos los nodos estén conectados entre sí, lo que también influye en esta densidad más baja en comparación con un grafo completamente conectado.
 
